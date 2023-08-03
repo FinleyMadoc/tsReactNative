@@ -7,6 +7,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { formatPhone, replaceBlank } from "../../utils/StringUI";
 import { get, request } from "../../utils/Request";
 import UserStore from "../../stores/UserStore";
+import Toast from "../../components/widget/Toast";
 
 
 import icon_logo_main from '../../assets/image/icon_main_logo.png'
@@ -45,7 +46,7 @@ export default () => {
             if (success) {
                 navigation.replace('MainTab')
             } else {
-                ToastAndroid.show('登录失败', 1000)
+                Toast.show('登陆失败')
             }
         })
 

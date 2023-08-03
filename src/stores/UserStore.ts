@@ -1,6 +1,7 @@
 import { request } from "../utils/Request";
 import {flow} from 'mobx'
 import { save } from "../utils/Storage";
+import Loading from "../components/widget/Loading";
 
 
 class UserStore {
@@ -41,6 +42,7 @@ class UserStore {
             phone: string, 
             pwd: string, 
             callback: (success: boolean) => void) {
+                Loading.show();
         try {
             const params = {
                 name: phone,
@@ -63,6 +65,8 @@ class UserStore {
             console.log("e", e);
             this.userInfo = null;
             callback?.(false)
+        } finally {
+            Loading.hide();
         }
     })
 

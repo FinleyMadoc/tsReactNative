@@ -18,6 +18,7 @@ import Welcome from './src/modules/welcome/Welcome';
 import Login from './src/modules/login/Login';
 import MainTab from './src/modules/mainTab/MainTab';
 import CustomMainTab from './src/modules/mainTab/CustomMainTab';
+import ArticleDetail from './src/modules/articleDetail/ArticleDetail';
 
 const Stack = createStackNavigator();
 
@@ -59,6 +60,16 @@ function App(): JSX.Element {
           <Stack.Screen
             name='MainTab'
             component={CustomMainTab}
+            options={{
+              headerShown: false,
+              // 从右边拉进来(IOS表示该风格由IOS移植，并不是仅IOS可用)
+              ...TransitionPresets.SlideFromRightIOS,
+              // ...TransitionPresets.ModalSlideFromBottomIOS
+            }}
+          />
+          <Stack.Screen
+            name='ArticleDetail'
+            component={ArticleDetail}
             options={{
               headerShown: false,
               // 从右边拉进来(IOS表示该风格由IOS移植，并不是仅IOS可用)

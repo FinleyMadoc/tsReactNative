@@ -37,7 +37,10 @@ export const request = (name: string, params: any): Promise<AxiosResponse<any, a
 
     const { url, method } = api;
     if (method === 'get') {
-
+        console.log(
+            url
+        );
+        
         return get(url, params)
     } else {
         return post(url, params)

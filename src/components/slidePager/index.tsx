@@ -16,7 +16,7 @@ import {PropsTypes} from './PropsTypes';
 import {Indicator} from './indicator';
 import {styles} from './style';
 
-import icon_close_modal from '../../assets/icon_close_modal.png';
+import icon_close_modal from '../../assets/image/icon_close_modal.png';
 
 const { width } = Dimensions.get('screen');
 const Os = Platform.OS;

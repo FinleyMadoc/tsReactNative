@@ -6,7 +6,7 @@ import Shop from '../shop/Shop';
 import Message from '../message/Message';
 import Mine from '../mine/Mine';
 import ImagePicker from 'react-native-image-crop-picker';
-import { launchImageLibrary, ImageLibraryOptions } from 'react-native-image-picker'
+import { launchImageLibrary, ImageLibraryOptions, ImagePickerResponse } from 'react-native-image-picker'
 
 import icon_tab_home_normal from '../../assets/image/icon_tab_home_normal.png';
 import icon_tab_home_selected from '../../assets/image/icon_tab_home_selected.png';
@@ -103,35 +103,40 @@ export default () => {
                     name="Home"
                     component={Home}
                     options={{
-                        title: '首页'
+                        title: '首页',
+                        headerShown: false
                     }}
                 />
                 <Bottom.Screen
                     name="Shop"
                     component={Shop}
                     options={{
-                        title: '购物'
+                        title: '购物',
+                        headerShown: false
                     }}
                 />
                 <Bottom.Screen
                     name="Publish"
                     component={Shop}
                     options={{
-                        title: '发布'
+                        title: '发布',
+                        headerShown: false
                     }}
                 />
                 <Bottom.Screen
                     name="Message"
                     component={Message}
                     options={{
-                        title: '消息'
+                        title: '消息',
+                        headerShown: false
                     }}
                 />
                 <Bottom.Screen
                     name="Mine"
                     component={Mine}
                     options={{
-                        title: '我'
+                        title: '我',
+                        headerShown: false
                     }}
                 />
             </Bottom.Navigator>

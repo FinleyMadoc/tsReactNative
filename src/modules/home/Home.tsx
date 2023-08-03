@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Dimensions, Image } from 'react-native';
+import React, { useEffect, useCallback } from 'react';
+import { View, Text, StyleSheet, Dimensions, Image, LogBox, ScrollView, TouchableOpacity } from 'react-native';
 import { useLocalStore, observer } from 'mobx-react';
 import HomeSotre from './HomeStore';
 import FlowList from '../../components/flowlist/FlowList.js';
 import ResizeImage from '../../components/ResizeImage';
 import Favourable from '../../components/Favourable';
-
-import icon_heart from '../../assets/image/icon_heart.png';
-import icon_heart_empty from '../../assets/image/icon_heart_empty.png'
-
+import TitleBar from './components/TitleBar';
+import CategotyList from './components/CategotyList';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -16,8 +16,11 @@ export default observer(() => {
 
     const store = useLocalStore(() => new HomeSotre());
 
+    const navigation = useNavigation<StackNavigationProp<any>>();
+
     useEffect(() => {
-        store.requestHomeList()
+        store.requestHomeList();
+        store.getCategoryList();
     }, [])
 
     const refreshNewData = () => {
@@ -29,12 +32,19 @@ export default observer(() => {
         store.requestHomeList();
     }
 
+    const onArticlePress = useCallback((article: ArticleSimple) => () => {
+        navigation.push('ArticleDetail', { id: article.id })
+    }, [])
+
     const renderItem = ({ item, index }: { item: ArticleSimple, index: number }) => {
-        if (item == null) {
+        if (item.title == 'null') {
             return null
         }
         return (
-            <View style={styles.item}>
+            <TouchableOpacity 
+                style={styles.item}
+                onPress={onArticlePress(item)}
+            >
                 <ResizeImage
                     uri={item.image}
                 />
@@ -49,10 +59,17 @@ export default observer(() => {
                         style={styles.heartImg}
                         source={icon_heart_empty}
                     /> */}
-                    <Favourable />
+                    <Favourable
+                        value={item.isFavorite}
+                        onValueChange={(value: boolean) => {
+                            console.log("value", value);
+
+                        }}
+                        size={20}
+                    />
                     <Text style={styles.countText}>{item.favoriteCount}</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     }
 
@@ -62,9 +79,18 @@ export default observer(() => {
         )
     }
 
+    const categoryList = store.categoryList.filter(i => i.isAdd)
     return (
         <View style={styles.root}>
+            <TitleBar
+                tab={1}
+                onTabChanged={(tab: number) => {
+                    console.log('tab', tab);
+
+                }}
+            />
             <FlowList
+                keyExtrator={(item: ArticleSimple) => item.id.toString()}
                 style={styles.flatList}
                 data={store.homeList}
                 extraData={[store.refreshing]}
@@ -76,6 +102,12 @@ export default observer(() => {
                 onEndReachedThreshold={0.1}
                 onEndReached={loadMoreData}
                 ListFooterComponent={<Footer />}
+                ListHeaderComponent={
+                    <CategotyList  
+                        categoryList={categoryList} 
+                        allCategoryList={store.categoryList}
+                        onCategoryChanged={(category: Category) => console.log('category', category)}
+                />}
             />
             {/* <FlatList
                 style={styles.flatList}
@@ -107,7 +139,7 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     container: {
-        paddingTop: 6
+        // paddingTop: 6
     },
     item: {
         width: (SCREEN_WIDTH - 18) / 2,   // SCREEN_WIDTH - 18 >> 1往右位移1 按位右移1
