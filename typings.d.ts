@@ -57,3 +57,18 @@ type Category = {
     default: boolean;
     isAdd: boolean;
 }
+
+type GoodsSimple = {
+    id: number;
+    title: string;
+    image: string;
+    price: number;
+    originPrice: number | undefined;
+    promotion: string | undefined;
+}
+
+type GoodsCategory = {
+    id: number;
+    name: string;
+    image: string;
+}

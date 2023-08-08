@@ -5,6 +5,7 @@ import { load } from "../../utils/Storage";
 import icon_logo_main from '../../assets/image/icon_main_logo.png'
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import UserStore from "../../stores/UserStore";
 
 export default () => {
 
@@ -20,13 +21,21 @@ export default () => {
 
     const getUserInfo = async () => {
         const cacheUserInfo = await load('userInfo');
-        console.log("cacheUserInfo", cacheUserInfo);
-        
-        if(cacheUserInfo && JSON.parse(cacheUserInfo)) {
-            navigation.replace('MainTab')
-        }else{
+        if(!cacheUserInfo){
             navigation.replace('Login') 
+        }else {
+            const parse = JSON.parse(cacheUserInfo)
+            if(parse) {
+                UserStore.setUserInfo(parse);
+                
+                navigation.replace('MainTab')
+            }else{
+                navigation.replace('Login') 
+            }
         }
+        
+        
+        
     }
     
 

@@ -10,6 +10,14 @@ const apiConfig = {
     articleDetail: {
         url: '/article/articleDetail',
         method: 'get'
+    },
+    goodsList: {
+        url: '/goods/goodsList',
+        method: 'get',
+    },
+    topTenCategory: {
+        url: '/goods/top10Category',
+        method: 'get',
     }
 }
 

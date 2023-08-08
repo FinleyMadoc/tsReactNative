@@ -1,12 +1,12 @@
 import { request } from "../utils/Request";
-import {flow} from 'mobx'
+import {action, flow, observable} from 'mobx'
 import { save } from "../utils/Storage";
 import Loading from "../components/widget/Loading";
 
 
 class UserStore {
 
-    userInfo: any;
+    @observable userInfo: any;
 
     // requestLogin = (phone: string, pwd: string, callback: (success: boolean) => void) => {
     //     console.log("phone",phone);
@@ -35,6 +35,10 @@ class UserStore {
     //     }
     // }
 
+    @action
+    setUserInfo = (info: any) => {
+        this.userInfo = info
+    }
 
     // flow yield
     requestLogin = flow(function* (
