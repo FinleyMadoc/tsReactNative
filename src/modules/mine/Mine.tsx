@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Dimensions, TouchableOpacity, LayoutChangeEvent, RefreshControl } from 'react-native';
 import { useLocalStore, observer } from 'mobx-react';
 import UserStore from '../../stores/UserStore';
@@ -6,6 +6,7 @@ import MineStore from './MineStore';
 import Empty from '../../components/Empty';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import SideMenu, {SideMenuRef} from './SideMenu';
 
 import icon_mine_bg from '../../assets/image/icon_mine_bg.png'
 import icon_menu from '../../assets/image/icon_menu.png'
@@ -35,6 +36,8 @@ export default observer(() => {
 
     const { userInfo } = UserStore
 
+
+    const sideMenuRef = useRef<SideMenuRef>(null);
     const store = useLocalStore(() => new MineStore())
 
     const [tabIndex, setTabIndex] = useState<number>(0);
@@ -74,6 +77,9 @@ export default observer(() => {
             <View style={styles.titleLayout}>
                 <TouchableOpacity
                     style={styles.menuBtn}
+                    onPress={() => {
+                        sideMenuRef.current?.show()
+                    }}
                 >
                     <Image style={styles.menuIcon} source={icon_menu} />
                 </TouchableOpacity>
@@ -110,7 +116,7 @@ export default observer(() => {
             },
             nameTxt: {
                 fontSize: 20,
-                color: 'white',
+                color: 'green',
                 fontWeight: 'bold',
 
             },
@@ -437,9 +443,10 @@ export default observer(() => {
             {renderTitle()}
             <ScrollView
                 style={styles.scrollView}
-                refreshControl={
+                refreshControl={        
                     <RefreshControl
                         refreshing={store.refreshing}
+                        onRefresh={store.requestAll}
                     />
                 }
             >
@@ -447,6 +454,7 @@ export default observer(() => {
                 {renderTabs()}
                 {renderList()}
             </ScrollView>
+            <SideMenu ref={sideMenuRef}/>
         </View>
     )
 })

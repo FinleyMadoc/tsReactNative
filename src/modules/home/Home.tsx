@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, LogBox, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image, LogBox, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { useLocalStore, observer } from 'mobx-react';
 import HomeSotre from './HomeStore';
 import FlowList from '../../components/flowlist/FlowList.js';
@@ -7,8 +7,23 @@ import ResizeImage from '../../components/ResizeImage';
 import Favourable from '../../components/Favourable';
 import TitleBar from './components/TitleBar';
 import CategotyList from './components/CategotyList';
+import { Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import _updateConfig from '../../../update.json'
+import { save } from '../../utils/Storage';
+import {
+    checkUpdate,
+    downloadUpdate,
+    switchVersion,
+    isFirstTime,
+    isRolledBack,
+    markSuccess,
+    switchVersionLater
+} from 'react-native-update';
+const { appKey } = _updateConfig[Platform.OS]
+console.log("appkey", appKey);
+
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -21,7 +36,53 @@ export default observer(() => {
     useEffect(() => {
         store.requestHomeList();
         store.getCategoryList();
+
+        checkPatch();
+
+        if (isFirstTime) {
+            markSuccess();
+            // 补丁成功，上报服务器信息
+            // 补丁安装成功率：99.5% ~ 99.7%
+          } else if (isRolledBack) {
+            // 补丁回滚，上报服务器信息
+          }
     }, [])
+
+    // 检查补丁更新
+    const checkPatch = async () => {
+        const info: any = await checkUpdate(appKey);
+        const { update, name, description, metaInfo } = info;
+        Alert.alert(
+            "info",
+            info,
+            [
+                { text: '取消' },
+            ]
+        )
+        const metaJson = JSON.parse(metaInfo);
+        save('patchVersion', name);
+        const { forceUpdate } = metaJson;
+        if (forceUpdate) {
+            // 弹窗提示用户
+        } else {
+            // 不弹窗默默操作
+        }
+        if (update) {
+            const hash = await downloadUpdate(
+                info,
+                {
+                    onDownloadProgress: ({ received, total }) => {},
+                },
+            );
+            if (hash) {
+                if (forceUpdate) {
+                    switchVersion(hash);
+                } else {
+                    switchVersionLater(hash);
+                }
+            }
+        }
+    }
 
     const refreshNewData = () => {
         store.resetPage();
@@ -41,7 +102,7 @@ export default observer(() => {
             return null
         }
         return (
-            <TouchableOpacity 
+            <TouchableOpacity
                 style={styles.item}
                 onPress={onArticlePress(item)}
             >
@@ -103,11 +164,11 @@ export default observer(() => {
                 onEndReached={loadMoreData}
                 ListFooterComponent={<Footer />}
                 ListHeaderComponent={
-                    <CategotyList  
-                        categoryList={categoryList} 
+                    <CategotyList
+                        categoryList={categoryList}
                         allCategoryList={store.categoryList}
                         onCategoryChanged={(category: Category) => console.log('category', category)}
-                />}
+                    />}
             />
             {/* <FlatList
                 style={styles.flatList}
