@@ -1,5 +1,5 @@
 apply plugin: "com.android.application"
-
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 
@@ -136,6 +136,7 @@ android {
 
     defaultConfig {
         applicationId "com.tsreactnative"
+        println "PACKAGE_NAME~~~~!!!!!! value: " + project.env.get("PACKAGE_NAME") 
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

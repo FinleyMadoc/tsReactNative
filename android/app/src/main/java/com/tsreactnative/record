@@ -1,0 +1,31 @@
+原生: https://juejin.cn/post/6844904161918582798
+网页用下面
+用private Context mContext;--则引入import android.content.Context;
+ReactNative用下面
+用private static ReactApplicationContext reactContext;--则引入import com.facebook.react.bridge.ReactApplicationContext;
+
+1、android的toast原生组件连接 (Toast)
+ToastModule.java
+CustomToastPackage.java
+
+2、android的原生页面链接 (Acticity)2
+RNactivityModule.java
+RNacticityPackage.java
+RNActicity.java
+AndroidManifest.xml(添加RNActicity页面注册)
+res->layout->activity_rn.xml(页面代码)
+
+3、用Promise机制调用安卓原生代码
+RNPromsieModule.java
+RNPromsiePackage.java
+
+4、callback回调方式
+RNCallbackModule.java
+RNCallbackPackage.java
+
+5、RNDeviceEventEmitter方式(监听原生事件)
+RNDeviceEventEmitterModule.java
+RNDeviceEventEmitterPackage.java
+
+6、5、多线程RNDeviceEventEmitter方式
+Multithreading

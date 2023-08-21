@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, LogBox, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { DeviceEventEmitter, View, Text, StyleSheet, Dimensions, Image, NativeModules, Button, TouchableOpacity, Alert } from 'react-native';
 import { useLocalStore, observer } from 'mobx-react';
 import HomeSotre from './HomeStore';
 import FlowList from '../../components/flowlist/FlowList.js';
@@ -22,7 +22,7 @@ import {
     switchVersionLater
 } from 'react-native-update';
 const { appKey } = _updateConfig[Platform.OS]
-console.log("appkey", appKey);
+const { ToastExample } = NativeModules;
 
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -34,6 +34,11 @@ export default observer(() => {
     const navigation = useNavigation<StackNavigationProp<any>>();
 
     useEffect(() => {
+        console.log("NativeModules", NativeModules);
+        //注册扫描监听
+        DeviceEventEmitter.addListener('sendEventToRn', (value) => { console.log('DeviceEventEmitter -->', value) });
+        DeviceEventEmitter.addListener('sendThreadDeviceEvent', (value) => { console.log('DeviceEventEmitter -->', value) });
+        // NativeModules.ToastExample.show('Awesome', ToastExample.LONG);
         store.requestHomeList();
         store.getCategoryList();
 
@@ -43,9 +48,9 @@ export default observer(() => {
             markSuccess();
             // 补丁成功，上报服务器信息
             // 补丁安装成功率：99.5% ~ 99.7%
-          } else if (isRolledBack) {
+        } else if (isRolledBack) {
             // 补丁回滚，上报服务器信息
-          }
+        }
     }, [])
 
     // 检查补丁更新
@@ -71,7 +76,7 @@ export default observer(() => {
             const hash = await downloadUpdate(
                 info,
                 {
-                    onDownloadProgress: ({ received, total }) => {},
+                    onDownloadProgress: ({ received, total }) => { },
                 },
             );
             if (hash) {
@@ -143,6 +148,55 @@ export default observer(() => {
     const categoryList = store.categoryList.filter(i => i.isAdd)
     return (
         <View style={styles.root}>
+            <Button
+                title='原生Activity跳转'
+                onPress={() => { NativeModules.RNactivityModule.RNActicity(); }}
+            />
+            <Button
+                title='RN用Promise机制调用安卓原生代码'
+                onPress={() => {
+                    NativeModules.RNPromiseModule.RNPromise('promise调用原生').then(
+                        (msg: any) => {
+                            console.log("promise接收的消息是", msg);
+                        }
+                    ).catch((err: any) => {
+                        console.log(err);
+
+                    })
+                }}
+            />
+            <Button
+                title='RN用Callback回调方式与调用安卓原生代码'
+                onPress={() => {
+                    NativeModules.RNCallbackModule.RNCallbackModule(
+                        (errorCallback: any) => {
+                            console.log("回调->", errorCallback);
+                        },
+                        (successCallback: any) => {
+                            console.log("回调->", successCallback);
+
+                        }
+                    )
+                }}
+            />
+            <Button
+                title='RNDeviceEventEmitter方式实现与android原生模块交互'
+                onPress={() => {
+                    NativeModules.RNDeviceEventEmitter.RNDeviceEvent();
+                }}
+            />
+            <Button
+                title='多线程RNDeviceEventEmitter方式实现与android原生模块交互'
+                onPress={() => {
+                    NativeModules.MultithreadingEventEmitter.RNThreadDeviceEvent();
+                }}
+            />
+            <Button
+                title="RN获取Activity相关的回调"
+                onPress={() => {
+                    NativeModules.ActivityCallback.RNActivityResult({ strData: 'RN向Android传输的数据' }, (onDone: any) => { console.log('onDone-->', onDone.result) }, (onCancel) => { console.log('onCancel-->', onCancel) });
+                }}
+            />
             <TitleBar
                 tab={1}
                 onTabChanged={(tab: number) => {

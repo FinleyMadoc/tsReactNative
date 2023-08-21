@@ -14,6 +14,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import cn.reactnative.modules.update.UpdateContext;
 
+import com.tsreactnative.CustomToastPackage;
+import com.tsreactnative.RNacticityPackage;
+import com.tsreactnative.RNPromisePackage;
+import com.tsreactnative.RNCallbackPackage;
+import com.tsreactnative.RNDeviceEventEmitterPackage;
+import com.tsreactnative.MultithreadingEventEmitterPackage;
+import com.tsreactnative.ActicityCallbackPackage;
+
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -29,6 +37,13 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+          packages.add(new CustomToastPackage());
+          packages.add(new RNacticityPackage());
+          packages.add(new RNPromisePackage());
+          packages.add(new RNCallbackPackage());
+          packages.add(new RNDeviceEventEmitterPackage());
+          packages.add(new MultithreadingEventEmitterPackage());
+          packages.add(new ActicityCallbackPackage());
           return packages;
         }
 

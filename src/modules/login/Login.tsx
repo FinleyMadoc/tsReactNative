@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, Linking, LayoutAnimation, ToastAndroid } from "react-native";
+import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, Linking, LayoutAnimation, NativeModules } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";

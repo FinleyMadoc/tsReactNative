@@ -23,5 +23,13 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+      <activity
+        android:name=".RNActicity" 
+        android:label="Rn Activity"> 
+      </activity>
+      <activity
+        android:name=".ActivityCallback" 
+        android:label="ActivityCallback" >
+      </activity>
     </application>
 </manifest>
