@@ -34,11 +34,14 @@ export default observer(() => {
     const navigation = useNavigation<StackNavigationProp<any>>();
 
     useEffect(() => {
-        console.log("NativeModules", NativeModules);
+//      原生start
+        // NativeModules.ForegroundModule.startForegroundService()
         //注册扫描监听
-        DeviceEventEmitter.addListener('sendEventToRn', (value) => { console.log('DeviceEventEmitter -->', value) });
-        DeviceEventEmitter.addListener('sendThreadDeviceEvent', (value) => { console.log('DeviceEventEmitter -->', value) });
+        // DeviceEventEmitter.addListener('sendEventToRn', (value) => { console.log('DeviceEventEmitter -->', value) });
+        // DeviceEventEmitter.addListener('sendThreadDeviceEvent', (value) => { console.log('DeviceEventEmitter -->', value) });
         // NativeModules.ToastExample.show('Awesome', ToastExample.LONG);
+//      原生end
+
         store.requestHomeList();
         store.getCategoryList();
 
@@ -148,7 +151,8 @@ export default observer(() => {
     const categoryList = store.categoryList.filter(i => i.isAdd)
     return (
         <View style={styles.root}>
-            <Button
+{/* 原生start */}
+            {/* <Button
                 title='原生Activity跳转'
                 onPress={() => { NativeModules.RNactivityModule.RNActicity(); }}
             />
@@ -194,9 +198,16 @@ export default observer(() => {
             <Button
                 title="RN获取Activity相关的回调"
                 onPress={() => {
-                    NativeModules.ActivityCallback.RNActivityResult({ strData: 'RN向Android传输的数据' }, (onDone: any) => { console.log('onDone-->', onDone.result) }, (onCancel) => { console.log('onCancel-->', onCancel) });
+                    NativeModules.ActivityCallback.RNActivityResult({ strData: 'RN向Android传输的数据' }, (onDone: any) => { console.log('onDone-->', onDone.result) }, (onCancel: any) => { console.log('onCancel-->', onCancel) });
                 }}
-            />
+            /> */}
+            {/* <Button
+                title="启动前台服务保活"
+                onPress={() => {
+                    ;
+                }}
+            /> */}
+{/* 原生end */}
             <TitleBar
                 tab={1}
                 onTabChanged={(tab: number) => {

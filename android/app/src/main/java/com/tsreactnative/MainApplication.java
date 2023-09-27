@@ -21,6 +21,7 @@ import com.tsreactnative.RNCallbackPackage;
 import com.tsreactnative.RNDeviceEventEmitterPackage;
 import com.tsreactnative.MultithreadingEventEmitterPackage;
 import com.tsreactnative.ActicityCallbackPackage;
+import com.tsreactnative.ForegroundPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -44,6 +45,7 @@ public class MainApplication extends Application implements ReactApplication {
           packages.add(new RNDeviceEventEmitterPackage());
           packages.add(new MultithreadingEventEmitterPackage());
           packages.add(new ActicityCallbackPackage());
+          packages.add(new ForegroundPackage());
           return packages;
         }
 

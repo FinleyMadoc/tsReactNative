@@ -105,6 +105,21 @@
     "@babel/helper-split-export-declaration" "^7.22.6"
     semver "^6.3.1"
 
+"@babel/helper-create-class-features-plugin@^7.22.10":
+  version "7.22.10"
+  resolved "https://registry.npmmirror.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.22.10.tgz#dd2612d59eac45588021ac3d6fa976d08f4e95a3"
+  integrity sha512-5IBb77txKYQPpOEdUdIhBx8VrZyDCQ+H82H0+5dX1TmuscP5vJKEE3cKurjtIw/vFwzbVH48VweE78kVDBrqjA==
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.22.5"
+    "@babel/helper-environment-visitor" "^7.22.5"
+    "@babel/helper-function-name" "^7.22.5"
+    "@babel/helper-member-expression-to-functions" "^7.22.5"
+    "@babel/helper-optimise-call-expression" "^7.22.5"
+    "@babel/helper-replace-supers" "^7.22.9"
+    "@babel/helper-skip-transparent-expression-wrappers" "^7.22.5"
+    "@babel/helper-split-export-declaration" "^7.22.6"
+    semver "^6.3.1"
+
 "@babel/helper-create-regexp-features-plugin@^7.22.5":
   version "7.22.9"
   resolved "https://registry.npmmirror.com/@babel/helper-create-regexp-features-plugin/-/helper-create-regexp-features-plugin-7.22.9.tgz#9d8e61a8d9366fe66198f57c40565663de0825f6"
@@ -286,6 +301,17 @@
     "@babel/helper-create-class-features-plugin" "^7.18.6"
     "@babel/helper-plugin-utils" "^7.18.6"
 
+"@babel/plugin-proposal-decorators@^7.22.7":
+  version "7.22.10"
+  resolved "https://registry.npmmirror.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.22.10.tgz#d6a8c3a9018e1b13e6647f869c5ea56ff2b585d4"
+  integrity sha512-KxN6TqZzcFi4uD3UifqXElBTBNLAEH1l3vzMQj6JwJZbL2sZlThxSViOKCYY+4Ah4V4JhQ95IVB7s/Y6SJSlMQ==
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.22.10"
+    "@babel/helper-plugin-utils" "^7.22.5"
+    "@babel/helper-replace-supers" "^7.22.9"
+    "@babel/helper-split-export-declaration" "^7.22.6"
+    "@babel/plugin-syntax-decorators" "^7.22.10"
+
 "@babel/plugin-proposal-export-default-from@^7.0.0":
   version "7.22.5"
   resolved "https://registry.npmmirror.com/@babel/plugin-proposal-export-default-from/-/plugin-proposal-export-default-from-7.22.5.tgz#825924eda1fad382c3de4db6fe1711b6fa03362f"
@@ -350,6 +376,13 @@
   integrity sha512-fm4idjKla0YahUNgFNLCB0qySdsoPiZP3iQE3rky0mBUtMZ23yDJ9SJdg6dXTSDnulOVqiF3Hgr9nbXvXTQZYA==
   dependencies:
     "@babel/helper-plugin-utils" "^7.12.13"
+
+"@babel/plugin-syntax-decorators@^7.22.10":
+  version "7.22.10"
+  resolved "https://registry.npmmirror.com/@babel/plugin-syntax-decorators/-/plugin-syntax-decorators-7.22.10.tgz#7d83ea04d893c442b78ebf4c3cbac59a7211deff"
+  integrity sha512-z1KTVemBjnz+kSEilAsI4lbkPOl5TvJH7YDSY1CTIzvLWJ+KHXp+mRe8VPmfnyvqOPqar1V2gid2PleKzRUstQ==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-syntax-dynamic-import@^7.0.0":
   version "7.8.3"
@@ -2469,7 +2502,7 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-dayjs@^1.8.15:
+dayjs@^1.11.9, dayjs@^1.8.15:
   version "1.11.9"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.9.tgz#9ca491933fadd0a60a2c19f6c237c03517d71d1a"
   integrity sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==
@@ -5213,24 +5246,22 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.6"
 
-mobx-react-lite@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.npmmirror.com/mobx-react-lite/-/mobx-react-lite-4.0.3.tgz#f7aa5ac3be558ca19a53b2929d9599679769c2a8"
-  integrity sha512-wEE1oT5zvDdvplG4HnRrFgPwg5GFVVrEtl42Er85k23zeu3om8H8wbDPgdbQP88zAihVsik6xJfw6VnzUl8fQw==
-  dependencies:
-    use-sync-external-store "^1.2.0"
+mobx-react-lite@^2.2.0:
+  version "2.2.2"
+  resolved "https://registry.npmmirror.com/mobx-react-lite/-/mobx-react-lite-2.2.2.tgz#87c217dc72b4e47b22493daf155daf3759f868a6"
+  integrity sha512-2SlXALHIkyUPDsV4VTKVR9DW7K3Ksh1aaIv3NrNJygTbhXe2A9GrcKHZ2ovIiOp/BXilOcTYemfHHZubP431dg==
 
-mobx-react@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.npmmirror.com/mobx-react/-/mobx-react-9.0.0.tgz#056af3ab4dd8ccfb8c3c8258d19d641f084a03a1"
-  integrity sha512-rhUBWXK/k4H/jMXZqbL0uTPncRSvJR23tpmJemoAEjJjm0Fkv6tTLG3Cze9MIgvf882Kradx6msizuQxLAiQwA==
+mobx-react@^6.1.8:
+  version "6.3.1"
+  resolved "https://registry.npmmirror.com/mobx-react/-/mobx-react-6.3.1.tgz#204f9756e42e19d91cb6598837063b7e7de87c52"
+  integrity sha512-IOxdJGnRSNSJrL2uGpWO5w9JH5q5HoxEqwOF4gye1gmZYdjoYkkMzSGMDnRCUpN/BNzZcFoMdHXrjvkwO7KgaQ==
   dependencies:
-    mobx-react-lite "^4.0.3"
+    mobx-react-lite "^2.2.0"
 
-mobx@^6.10.0:
-  version "6.10.0"
-  resolved "https://registry.npmmirror.com/mobx/-/mobx-6.10.0.tgz#3537680fe98d45232cc19cc8f76280bd8bb6b0b7"
-  integrity sha512-WMbVpCMFtolbB8swQ5E2YRrU+Yu8iLozCVx3CdGjbBKlP7dFiCSuiG06uea3JCFN5DnvtAX7+G5Bp82e2xu0ww==
+mobx@^5.15.4:
+  version "5.15.7"
+  resolved "https://registry.npmmirror.com/mobx/-/mobx-5.15.7.tgz#b9a5f2b6251f5d96980d13c78e9b5d8d4ce22665"
+  integrity sha512-wyM3FghTkhmC+hQjyPGGFdpehrcX1KOXsDuERhfK2YbJemkUhEB+6wzEN639T21onxlfYBmriA1PFnvxTUhcKw==
 
 ms@2.0.0:
   version "2.0.0"
@@ -5247,7 +5278,7 @@ ms@2.1.3:
   resolved "https://registry.npmmirror.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
-nanoid@^3.1.23:
+nanoid@^3.1.23, nanoid@^3.3.3:
   version "3.3.6"
   resolved "https://registry.npmmirror.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
@@ -5847,6 +5878,11 @@ react-native-codegen@^0.70.6:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
+react-native-config@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.npmmirror.com/react-native-config/-/react-native-config-1.5.1.tgz#73c94f511493e9b7ff9350cdf351d203a1b05acc"
+  integrity sha512-g1xNgt1tV95FCX+iWz6YJonxXkQX0GdD3fB8xQtR1GUBEqweB9zMROW77gi2TygmYmUkBI7LU4pES+zcTyK4HA==
+
 react-native-gesture-handler@^2.8.0:
   version "2.12.0"
   resolved "https://registry.npmmirror.com/react-native-gesture-handler/-/react-native-gesture-handler-2.12.0.tgz#59ca9d97e4c71f70b9c258f14a1a081f4c689976"
@@ -5863,6 +5899,16 @@ react-native-gradle-plugin@^0.70.3:
   resolved "https://registry.npmmirror.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.70.3.tgz#cbcf0619cbfbddaa9128701aa2d7b4145f9c4fc8"
   integrity sha512-oOanj84fJEXUg9FoEAQomA8ISG+DVIrTZ3qF7m69VQUJyOGYyDZmPqKcjvRku4KXlEH6hWO9i4ACLzNBh8gC0A==
 
+react-native-image-crop-picker@^0.38.0:
+  version "0.38.1"
+  resolved "https://registry.npmmirror.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.38.1.tgz#5973b4a8b55835b987e6be2064de411e849ac005"
+  integrity sha512-cF5UQnWplzHCeiCO+aiGS/0VomWaLmFf3nSsgTMPfY+8+99h8N/eHQvVdSF7RsGw50B8394wGeGyqHjjp8YRWw==
+
+react-native-image-picker@^5.1.0:
+  version "5.6.0"
+  resolved "https://registry.npmmirror.com/react-native-image-picker/-/react-native-image-picker-5.6.0.tgz#e7b6637dc5296cddb486106b711eb4eedabd083d"
+  integrity sha512-QHHb0qw3VXDedllrfS6SjxNG1SubnjUjIR2OH1HVbjv/IRVa3v4fI1MHbQaSNXlGopT9kL9jcnh7tbcX1z74Vg==
+
 react-native-safe-area-context@^4.7.1:
   version "4.7.1"
   resolved "https://registry.npmmirror.com/react-native-safe-area-context/-/react-native-safe-area-context-4.7.1.tgz#b7be2d68dee909717cfa439bb5c7966042d231e8"
@@ -5875,6 +5921,13 @@ react-native-screens@^3.22.1:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-update@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.npmmirror.com/react-native-update/-/react-native-update-8.1.0.tgz#a4a81278b69dceae5234c070bc4b5fe6a322f156"
+  integrity sha512-rkMYrrdauju4pTMkmx0voJoHu/uuPkg5q7Bw2faMaUW+jy+yW3aljjekGXZf/EvVKabOMdxSSmYU3uAWvPEyKA==
+  dependencies:
+    nanoid "^3.3.3"
 
 react-native@0.70.6:
   version "0.70.6"
@@ -7029,7 +7082,7 @@ use-latest-callback@^0.1.5:
   resolved "https://registry.npmmirror.com/use-latest-callback/-/use-latest-callback-0.1.6.tgz#3fa6e7babbb5f9bfa24b5094b22939e1e92ebcf6"
   integrity sha512-VO/P91A/PmKH9bcN9a7O3duSuxe6M14ZoYXgA6a8dab8doWNdhiIHzEkX/jFeTTRBsX0Ubk6nG4q2NIjNsj+bg==
 
-use-sync-external-store@^1.0.0, use-sync-external-store@^1.2.0:
+use-sync-external-store@^1.0.0:
   version "1.2.0"
   resolved "https://registry.npmmirror.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
   integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
