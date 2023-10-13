@@ -7,6 +7,8 @@ declare module '*.json';
 declare module '*.gif';
 declare module '*.webp';
 declare module '*.tsx';
+declare module 'react-native-vector-icons/Ionicons';
+
 
 
 // 内容、评论

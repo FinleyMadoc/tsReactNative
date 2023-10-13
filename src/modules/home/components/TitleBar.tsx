@@ -4,6 +4,8 @@ import { View,TouchableOpacity, Text, Image, StyleSheet } from 'react-native'
 import icon_daily from '../../../assets/image/icon_daily.png';
 import icon_search from '../../../assets/image/icon_search.png';
 
+import ShowList from "./ShowList";
+
 type Props = {
     tab: number;
     onTabChanged: (tabIndex: number) => void
@@ -11,6 +13,7 @@ type Props = {
 
 export default ({tab, onTabChanged}: Props) => {
     const [tabIndex, setTabIndex] = useState<number>(1);
+    const [showList, setShowList] = useState<boolean>(false)
 
     useEffect(() => {
         setTabIndex(tab)
@@ -20,6 +23,7 @@ export default ({tab, onTabChanged}: Props) => {
         <View style={styles.titleLayout}>
             <TouchableOpacity
                 style={styles.dailyBtn}
+                onPress={() => {setShowList(true)}}
             >
                 <Image
                     style={styles.icon}
@@ -66,6 +70,8 @@ export default ({tab, onTabChanged}: Props) => {
                     source={icon_search}
                 />
             </TouchableOpacity>
+
+            {showList && <ShowList cancelShow={() => setShowList(false)}/>}
         </View>
     )
 

@@ -21,6 +21,10 @@ import CustomMainTab from './src/modules/mainTab/CustomMainTab';
 import ArticleDetail from './src/modules/articleDetail/ArticleDetail';
 import SearchGoods from './src/modules/searchGoods/SearchGoods';
 
+import TimeComponent from './src/modules/ModalComponent/TimeComponent';
+import PanResponderComponent from './src/modules/ModalComponent/PanResponderComponent';
+import GithubPanComponent from './src/modules/ModalComponent/GithubPanComponent';
+
 const Stack = createStackNavigator();
 
 function App(): JSX.Element {
@@ -85,7 +89,34 @@ function App(): JSX.Element {
             options={{
               headerShown: false,
               presentation: 'transparentModal',
-              
+
+            }}
+          />
+
+          <Stack.Screen
+            name='Time'
+            component={TimeComponent}
+            options={{
+              headerShown: false,
+              presentation: 'transparentModal',
+            }}
+          />
+
+          <Stack.Screen
+            name='PanResponder'
+            component={PanResponderComponent}
+            options={{
+              headerShown: false,
+              presentation: 'transparentModal',
+            }}
+          />
+
+          <Stack.Screen
+            name='GithubPan'
+            component={GithubPanComponent}
+            options={{
+              headerShown: false,
+              presentation: 'transparentModal',
             }}
           />
         </Stack.Navigator>
