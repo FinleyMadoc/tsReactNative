@@ -21,7 +21,7 @@ export default class GithubPanComponent extends React.Component<any, any> {
     _scale = 1;
     _bannerTop = 0;
     _opacity = 0;
-    _mainTop = 0;
+    _mainTop = -192;
     _userStyle = {
         style: {
             top: 0
@@ -55,7 +55,7 @@ export default class GithubPanComponent extends React.Component<any, any> {
                 this._iconTop = 95 - this._userStyle.style.top / 4.16;
                 this._bannerTop = 0;
                 this._opacity = 0;
-
+                console.log("this._userStyle.style.top", this._userStyle.style.top);
                 if (this._userStyle.style.top < -62.5) {
                     this._scale = 0.6;
                     this._iconTop = 110;
@@ -67,12 +67,15 @@ export default class GithubPanComponent extends React.Component<any, any> {
                     this._scale = 1;
                     this._iconTop = 95;
                 }
+
+                console.log("this._mainTop", this._mainTop);
                 if (this._userStyle.style.top < this._mainTop) {
                     this._userStyle.style.top = this._mainTop;
                     this._opacity = 1;
                     this._bannerTop = 129.5;
                 }
-
+                console.log("this._bannerTop", this._bannerTop);
+                
                 this.setState({
                     scale: this._scale,
                     iconTop: this._iconTop,
@@ -168,7 +171,7 @@ const styles = StyleSheet.create({
     },
     banner: {
         width: DataUtil.size.width,
-        height: 125,
+        height: 135,
         position: "absolute",
         top: 0,
         left: 0

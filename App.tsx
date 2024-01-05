@@ -24,6 +24,7 @@ import SearchGoods from './src/modules/searchGoods/SearchGoods';
 import TimeComponent from './src/modules/ModalComponent/TimeComponent';
 import PanResponderComponent from './src/modules/ModalComponent/PanResponderComponent';
 import GithubPanComponent from './src/modules/ModalComponent/GithubPanComponent';
+import CardComponent from './src/modules/ModalComponent/CardComponent';
 
 const Stack = createStackNavigator();
 
@@ -114,6 +115,15 @@ function App(): JSX.Element {
           <Stack.Screen
             name='GithubPan'
             component={GithubPanComponent}
+            options={{
+              headerShown: false,
+              presentation: 'transparentModal',
+            }}
+          />
+
+          <Stack.Screen
+            name='Card'
+            component={CardComponent}
             options={{
               headerShown: false,
               presentation: 'transparentModal',
