@@ -1,7 +1,0 @@
-.idea
-.vscode
-/out
-/android/.gradle
-/android/app
-/node_modules
-/.pushy/intermedia

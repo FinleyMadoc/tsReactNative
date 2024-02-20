@@ -8,7 +8,6 @@ declare module '*.gif';
 declare module '*.webp';
 declare module '*.tsx';
 declare module 'react-native-vector-icons/Ionicons';
-declare module 'react-native-swipe-cards';
 
 
 

@@ -20,7 +20,7 @@ interface MoreFunctionProps {
     show: () => void;
 }
 
-export default ({ cancelShow }: ShowListProps) => {
+export default ({cancelShow}: ShowListProps) => {
     const [showSelect, setSelect] = useState<String>('0');
     const navigation = useNavigation<StackNavigationProp<any>>();
     const moreFunctionRef = useRef<MoreFunctionProps>(null);
@@ -34,192 +34,156 @@ export default ({ cancelShow }: ShowListProps) => {
             transparent={true}
             animationType='slide'
         >
-            <TouchableOpacity
-                style={styles.mainBackGround}
+            <TouchableOpacity 
+                style={styles.mainBackGround} 
                 onPress={() => cancelShow()}
             >
                 {/* 时间 */}
-                <TouchableOpacity
+                <TouchableOpacity 
                     style={styles.optionItemMT}
                     onPress={async () => {
-                        if (showSelect != '1') {
+                        if(showSelect != '1'){
                             LayoutAnimation.spring();
                             changeShowSelect('1');
-                        } else {
+                        }else{
                             navigation.push('Time');
                             cancelShow();
                         }
                     }}
                 >
-                    <View
+                    <View 
                         style={[
                             styles.optionItemView,
                             showSelect == '1' ?
-                                {
-                                    width: '50%',
-                                    backgroundColor: '#7c8577'
-                                }
-                                :
-                                {
-                                    justifyContent: 'center',
-                                }
+                            {
+                                width: '50%',
+                                backgroundColor: '#7c8577'
+                            }
+                            :
+                            {
+                                justifyContent: 'center',
+                            }
                         ]}>
-                        <Icon size={25} name="stopwatch" color="#fff" style={{ padding: 5, }} />
+                        <Icon size={25} name="stopwatch" color="#fff" style={{ padding: 5,  }} />
                         {
                             showSelect == '1' ?
-                                <Text style={{ color: '#fff', fontSize: 16, paddingRight: 5 }}>Time</Text>
-                                :
-                                null
+                            <Text style={{color: '#fff', fontSize: 16, paddingRight: 5}}>Time</Text>
+                            :
+                            null
                         }
                     </View>
                 </TouchableOpacity>
 
                 {/* tennisball-outline */}
-                <TouchableOpacity
+                <TouchableOpacity 
                     style={styles.optionItemMT}
                     onPress={() => {
-                        if (showSelect != '2') {
+                        if(showSelect != '2'){
                             LayoutAnimation.spring();
                             changeShowSelect('2');
-                        } else {
+                        }else{
                             navigation.push('PanResponder');
                             cancelShow();
                         }
                     }}
                 >
-                    <View
+                    <View 
                         style={[
                             styles.optionItemView,
                             showSelect == '2' ?
-                                {
-                                    width: '50%',
-                                    backgroundColor: '#00a6ac'
-                                }
-                                :
-                                {
-                                    justifyContent: 'center',
-                                }
+                            {
+                                width: '50%',
+                                backgroundColor: '#00a6ac'
+                            }
+                            :
+                            {
+                                justifyContent: 'center',
+                            }
                         ]}>
-                        <Icon size={25} name="baseball" color="#fff" style={{ padding: 5, }} />
+                        <Icon size={25} name="baseball" color="#fff" style={{ padding: 5,  }} />
                         {
                             showSelect == '2' ?
-                                <Text style={{ color: '#fff', fontSize: 16, paddingRight: 5 }}>baseball</Text>
-                                :
-                                null
+                            <Text style={{color: '#fff', fontSize: 16, paddingRight: 5}}>baseball</Text>
+                            :
+                            null
                         }
                     </View>
                 </TouchableOpacity>
 
                 {/* MoreFunction */}
-                <TouchableOpacity
+                <TouchableOpacity 
                     style={styles.optionItemMT}
                     onPress={() => {
-                        if (showSelect != '3') {
+                        if(showSelect != '3'){
                             LayoutAnimation.spring();
                             changeShowSelect('3');
-                        } else {
+                        }else{
                             moreFunctionRef.current?.show();
                         }
                     }}
                 >
-                    <View
+                    <View 
                         style={[
                             styles.optionItemView,
                             showSelect == '3' ?
-                                {
-                                    width: '50%',
-                                    backgroundColor: '#f47920'
-                                }
-                                :
-                                {
-                                    justifyContent: 'center',
-                                }
+                            {
+                                width: '50%',
+                                backgroundColor: '#f47920'
+                            }
+                            :
+                            {
+                                justifyContent: 'center',
+                            }
                         ]}>
-                        <Icon size={25} name="file-tray-full" color="#fff" style={{ padding: 5, }} />
+                        <Icon size={25} name="file-tray-full" color="#fff" style={{ padding: 5,  }} />
                         {
                             showSelect == '3' ?
-                                <Text style={{ color: '#fff', fontSize: 16, paddingRight: 5 }}>More</Text>
-                                :
-                                null
+                            <Text style={{color: '#fff', fontSize: 16, paddingRight: 5}}>More</Text>
+                            :
+                            null
                         }
                     </View>
                 </TouchableOpacity>
 
-                {/* github */}
-                <TouchableOpacity
+                {/* twitter */}
+                <TouchableOpacity 
                     style={styles.optionItemMT}
                     onPress={() => {
-                        if (showSelect != '4') {
+                        if(showSelect != '4'){
                             LayoutAnimation.spring();
                             changeShowSelect('4');
-                        } else {
+                        }else{
                             navigation.push('GithubPan');
                             cancelShow();
                         }
                     }}
                 >
-                    <View
+                    <View 
                         style={[
                             styles.optionItemView,
                             showSelect == '4' ?
-                                {
-                                    width: '50%',
-                                    backgroundColor: '#6950a1'
-                                }
-                                :
-                                {
-                                    justifyContent: 'center',
-                                }
+                            {
+                                width: '50%',
+                                backgroundColor: '#6950a1'
+                            }
+                            :
+                            {
+                                justifyContent: 'center',
+                            }
                         ]}>
-                        <Icon size={25} name="logo-github" color="#fff" style={{ padding: 5, }} />
+                        <Icon size={25} name="logo-github" color="#fff" style={{ padding: 5,  }} />
                         {
                             showSelect == '4' ?
-                                <Text style={{ color: '#fff', fontSize: 16, paddingRight: 5 }}>github</Text>
-                                :
-                                null
-                        }
-                    </View>
-                </TouchableOpacity>
-
-                {/* card */}
-                <TouchableOpacity
-                    style={styles.optionItemMT}
-                    onPress={() => {
-                        if (showSelect != '5') {
-                            LayoutAnimation.spring();
-                            changeShowSelect('5');
-                        } else {
-                            navigation.push('Card');
-                            cancelShow();
-                        }
-                    }}
-                >
-                    <View
-                        style={[
-                            styles.optionItemView,
-                            showSelect == '5' ?
-                                {
-                                    width: '50%',
-                                    backgroundColor: '#000000'
-                                }
-                                :
-                                {
-                                    justifyContent: 'center',
-                                }
-                        ]}>
-                        <Icon size={25} name="id-card" color="#fff" style={{ padding: 5, }} />
-                        {
-                            showSelect == '5' ?
-                                <Text style={{ color: '#fff', fontSize: 16, paddingRight: 5 }}>card</Text>
-                                :
-                                null
+                            <Text style={{color: '#fff', fontSize: 16, paddingRight: 5}}>github</Text>
+                            :
+                            null
                         }
                     </View>
                 </TouchableOpacity>
 
 
             </TouchableOpacity>
-            <MoreFunctionComponent ref={moreFunctionRef} />
+            <MoreFunctionComponent ref={moreFunctionRef}/>
         </Modal>
     )
 }
@@ -233,13 +197,13 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     optionItemView: {
-        backgroundColor: '#464547',
-        flexDirection: 'row',
+        backgroundColor: '#464547', 
+        flexDirection: 'row', 
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '15%',
         borderTopRightRadius: 20,
         borderBottomRightRadius: 20
     },
-
+    
 })
