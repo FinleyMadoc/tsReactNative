@@ -36,5 +36,14 @@
             android:name=".ForegroundService"
             android:exported="false">
         </service>
+        <provider
+        android:name="com.tsreactnative.FileProviderClass"
+        android:authorities="${applicationId}.docViewer_provider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+          <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths" />
+      </provider>
     </application>
 </manifest>

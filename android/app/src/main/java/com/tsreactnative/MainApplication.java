@@ -22,6 +22,9 @@ import com.tsreactnative.RNDeviceEventEmitterPackage;
 import com.tsreactnative.MultithreadingEventEmitterPackage;
 import com.tsreactnative.ActicityCallbackPackage;
 import com.tsreactnative.ForegroundPackage;
+import com.tsreactnative.DownloadApkPackage;
+import com.tsreactnative.FilePickerPackage;
+import com.tsreactnative.RNDocViewerPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -46,6 +49,9 @@ public class MainApplication extends Application implements ReactApplication {
           packages.add(new MultithreadingEventEmitterPackage());
           packages.add(new ActicityCallbackPackage());
           packages.add(new ForegroundPackage());
+          packages.add(new DownloadApkPackage());
+          packages.add(new FilePickerPackage());
+          packages.add(new RNDocViewerPackage());
           return packages;
         }
 
